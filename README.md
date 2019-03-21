@@ -1,7 +1,7 @@
 # Word-Cookies
 Text-based anagram puzzle game
 
-Text-based clone of Bitmango's game for iPhone. Written to practice Java.
+Written to practice Java.
 
 Possible future enhancements:
 - Two columns
