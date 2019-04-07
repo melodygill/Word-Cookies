@@ -39,7 +39,7 @@ public class WordCookies
 		mainWord = scramble(mainWord);
 		printBoard(mainWord, blankWords);
 		
-		//main loop		
+		//main loop	- continue looping until all words have been guessed	
 		while (done == false)
 		{
 			allDone = true;
@@ -125,7 +125,7 @@ public class WordCookies
 			temp.clear();
 		}
 		
-		//turn tempBuild into validWords or a string array
+		//turn tempBuild into validWords, which is a string array
 		validWords = tempBuild.toArray(validWords);
 		
 		return validWords;
@@ -139,7 +139,7 @@ public class WordCookies
 		return alreadyGuessed;
 	}
 	
-	//scrambles the passed String (probably mainWord)
+	//scrambles the passed String (which will be mainWord in the main function)
 	public static String scramble (String word)
 	{
 		char[] arr = word.toCharArray();
@@ -159,7 +159,7 @@ public class WordCookies
 		return new String(arr);	
 	}
 	
-	//gives a hint - 1 letter. replaces first - in blankWords w corresponding validWords letter
+	//gives a one-letter hint. replaces first - in blankWords with corresponding validWords letter
 	public static String[] hint (String[] blankWords, String[] validWords)
 	{
 		for (int x = 0; x < blankWords.length; x++)
@@ -174,7 +174,8 @@ public class WordCookies
 				}
 			}
 		}
-		System.out.println("NO HINT BECAUSE I AM BAD!!!!!!");
+		//If all hints are given:
+		System.out.println("No more hints are available.");
 		return blankWords;
 	}
 	
@@ -204,7 +205,7 @@ public class WordCookies
 		else if (containsString(guess, validWords) == true)
 		{			
 			System.out.println(guess + " is correct!");			
-				/*when user guesses correctly:
+				/* when user guesses correctly:
 				 * make the corresponding cell in alreadyGuessed true
 				 * take the word from validWords and put it into the blankWords cell of the same #
 				 * */
@@ -236,7 +237,7 @@ public class WordCookies
 		
 		for (int x = 0; x < dictionary.size(); x++) //change this to dictionary
 		{
-			/*goes through each letter of each word in dictionary to see if the word is
+			/* goes through each letter of each word in dictionary to see if the word is
 			 * made up of letters in mainWord*/
 			testWord = dictionary.get(x).toUpperCase();
 			testMainWord = mainWord.toUpperCase();
@@ -276,8 +277,8 @@ public class WordCookies
 		{
 			blankWords[x] = "-";
 			
-			//starts at 1 because there is already one hyphen in the cell
-			//without the first hyphen, the string starts with null
+			//this loop starts at 1 because there is already one hyphen in the cell
+			//without the first hyphen, the string is not initialized, so hyphens can't be added to it
 			for (int y = 1; y < validWords[x].length(); y++)
 			{
 				blankWords[x] = blankWords[x] + "-";
@@ -332,7 +333,7 @@ public class WordCookies
 	//prints beginning info
 	public static void printInfo()
 	{
-		System.out.println("Welcome to Word Cookies!");
+		System.out.println("Welcome to Word Cookies, by Melody Gill!");
 		System.out.println("The object of this game is to guess words that can be made out of");
 		System.out.println("the same letters as a word you will be given.");
 		System.out.println("For example, 'dog' can be made out of 'good'.");
@@ -372,7 +373,7 @@ public class WordCookies
 		}
 	}
 	
-	//Converts ArrayList to String array. For testing
+	//Converts ArrayList to String array
 	public static String[] arrayListToArray (ArrayList<String> arrLi)
 	{
 		String[] newArray = new String[arrLi.size()];
