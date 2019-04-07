@@ -48,12 +48,10 @@ public class WordCookies
 			if (guess.equalsIgnoreCase("s"))
 			{
 				mainWord = scramble(mainWord);
-				System.out.println("Word scrambled.");
 			}
 			else if (guess.equalsIgnoreCase("h"))
 			{
 				blankWords = hint(blankWords, validWords);
-				System.out.println("Hint given.");
 			}
 						
 			printBoard(mainWord, blankWords);
@@ -156,6 +154,7 @@ public class WordCookies
 			arr[y] = temp;
 		}
 		
+		System.out.println("Word scrambled.");
 		return new String(arr);	
 	}
 	
@@ -170,6 +169,7 @@ public class WordCookies
 				{
 					blankWords[x] = blankWords[x].substring(0, y) + validWords[x].charAt(y) + 
 							blankWords[x].substring(y + 1);
+					System.out.println("Hint given.");
 					return blankWords;
 				}
 			}
